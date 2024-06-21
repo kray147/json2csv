@@ -1,17 +1,37 @@
 import os
 os.chdir(os.path.dirname(__file__))
 
+#This program is aimed to be used especially in spotify raw data modifications
+
+
+print("""
+
+
+   _                  _____                  ___                 _   _  __       
+  (_)                / __  \                /   |               | | (_)/ _|      
+   _ ___  ___  _ __  `' / /' ___ _____   __/ /| |___ _ __   ___ | |_ _| |_ _   _ 
+  | / __|/ _ \| '_ \   / /  / __/ __\ \ / / /_| / __| '_ \ / _ \| __| |  _| | | |
+  | \__ \ (_) | | | |./ /__| (__\__ \\ V /\___  \__ \ |_) | (_) | |_| | | | |_| |
+  | |___/\___/|_| |_|\_____/\___|___/ \_/     |_/___/ .__/ \___/ \__|_|_|  \__, |
+ _/ |                                               | |                     __/ |
+|__/                                                |_|                    |___/ 
+
+
+
+""")
+
 print("Welcome to json2csv ! Here you can turn any json file into a csv, real quick, real simple, no problems !")
 #insert funny smiley later
-print("What file do you want to convert ?(submit the whole filename with extension): ")
+print("What file do you want to change ?(submit the whole filename with extension): ")
 ask=str(input())
-file=open(ask,mode="r",encoding="utf-8")
+file=open("Streaming_History_Audio_2023_4.json",mode="r",encoding="utf-8")
 content=file.read()
 lines=content.split("},{")
 
 #To deal with the f*cking comas in artists names or album names F*CK YOU DONALD GLOVER:
 
-def split_quoted_commas(text):
+#This function was written by chatgpt, i didn't understand it so i simply wrote a simpler and more understandable one right below
+""" def split_quoted_commas(text):
     result = []  # List to hold the final split segments
     current = []  # List to accumulate characters for the current segment
     in_quotes = False  # Flag to indicate whether we are inside quotes
@@ -40,11 +60,11 @@ def split_quoted_commas(text):
         i += 1
 
     result.append(''.join(current).strip())
-    return result
+    return result """
 
 
 
-#It's awful and doesn't serve any other purpose than causing suffering, I asked chatgpt for the real function used cuz i couldn't figure it out 
+#It's awful and doesn't serve any other purpose than causing suffering, it was my first attemp at 4am, it didn't work
 """ i=0
     while i<=len(alpha):
         bracks=False
@@ -54,14 +74,33 @@ def split_quoted_commas(text):
             alpha=alpha.split(",") 
         i=i+1 """
 
+#Now this does the exact thing i wanted but way less complicated than what chatgpt did
+def spliter(alpha):
+    bracks=False
+    kiss=[]
+    temp=""
+    for i in range(len(alpha)):
+        if alpha[i]=='"' and(alpha[i-1] != '\\'):
+            bracks=not bracks
+            temp=temp+alpha[i]
+        elif alpha[i]==',' and bracks==False:
+            
+            kiss.append(temp)
+            temp=""
+        else:
+            temp=temp+alpha[i]
+    return(kiss)
 
 roses=[]
 for line in lines:
     alpha=line
-    #alpha=alpha.split(',')
+
+    #print(alpha)
+    #print(type(alpha))
     
     
-    alpha=split_quoted_commas(alpha)
+    alpha=spliter(alpha)
+
 
 
     roses.append(alpha)
@@ -69,8 +108,6 @@ for line in lines:
     
 
 file.close()
-
-
 
 
 for i in range(len(roses)):
@@ -109,6 +146,6 @@ for i in range(len(bigrow)):
     writer.write("\n")
 writer.close()
 
-print(f"Your file is available, its name is '{modded}'")
+print(f"Your file is available, its name is: '{modded}'")
 
 
