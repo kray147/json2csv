@@ -24,7 +24,7 @@ print("Welcome to json2csv ! Here you can turn any json file into a csv, real qu
 #insert funny smiley later
 print("What file do you want to change ?(submit the whole filename with extension): ")
 ask=str(input())
-file=open(ask,mode="r",encoding="utf-8")
+file=open(ask,mode="r",encoding="ansi")
 content=file.read()
 lines=content.split("},{")
 
@@ -87,6 +87,8 @@ def spliter(alpha):
             
             kiss.append(temp)
             temp=""
+        elif alpha[i]==";":
+            temp=temp+"-"
         else:
             temp=temp+alpha[i]
     return(kiss)
@@ -116,6 +118,9 @@ for i in range(len(roses)):
         roses[i][j]=roses[i][j].split(":",1)
         for k in range(len(roses[i][j])):
              roses[i][j][k]=roses[i][j][k].strip("[").strip("{").strip("]").strip("}").strip('"')
+             roses[i][j][k]=roses[i][j][k].replace(",","")
+        
+
 
 
 
@@ -138,7 +143,7 @@ for n in range(0,len(roses)):
 
 modded=ask.strip(".json")+".csv"
 
-writer=open(modded,"w+",encoding="utf-8")
+writer=open(modded,"w+",encoding="ansi")
 for i in range(len(bigrow)):
     for j in range(len(bigrow[i])):
         
