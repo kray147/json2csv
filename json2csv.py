@@ -24,7 +24,7 @@ print("Welcome to json2csv ! Here you can turn any json file into a csv, real qu
 #insert funny smiley later
 print("What file do you want to change ?(submit the whole filename with extension): ")
 ask=str(input())
-file=open("Streaming_History_Audio_2023_4.json",mode="r",encoding="utf-8")
+file=open(ask,mode="r",encoding="utf-8")
 content=file.read()
 lines=content.split("},{")
 
