@@ -1,7 +1,7 @@
 # json2csv
 
 ## Overview
-Welcome to json2csv! This Python script allows you to convert any JSON file into a CSV format quickly and easily. It handles complex JSON structures and ensures that data integrity is maintained throughout the conversion process.
+Welcome to json2csv! This Python script allows you to convert any JSON file into a CSV format quickly and easily. It handles complex JSON structures and ensures that data integrity is maintained throughout the conversion process. I made it while trying to convert json data from spotify to a more convenient csv file, it was a fun challenge but I needed chatgpt for the trickiest part. Have fun !
 
 ## Features
 - Converts JSON files to CSV format.
