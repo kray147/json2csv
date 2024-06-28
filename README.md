@@ -67,7 +67,6 @@ And voilà! Your CSV file is ready to use. 🎉
 
 Happy Converting! 🎉
 
-*P.S. Don't forget to play some good tunes while your data gets transformed!* 🎧 AND IF THIS TEXT LOOKS WEIRD
+*P.S. Don't forget to play some good tunes while your data gets transformed!* 🎧 AND IF THIS TEXT LOOKS WEIRD IT'S NORMAL IT WAS MOSTLY WRITTEN BY CHATGPT AS I AM LAZY.
 ```
 
-Feel free to customize the links and any specific details to match your actual GitHub repository and usage!
